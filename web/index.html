@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<title>PidFile project Page</title>
+		<link rel="stylesheet" type="text/css" href="style.css" />
+	</head>
+	<body>
+		<h1>Welcome to the PidFile project page</h1>
+		<p>PidFile allows you to make sure that there is only one instance of a program running
+		at any point in time. This is achieved with a pid file that records the pid of a program.
+		When it starts any existing pid file is checked to see if the program that created it is
+		still running. If so the calling program can halt or take remedial action.</p>
+		<h2>One way to use it</h2>
+<pre>
+require 'pidfile'
+
+unless Pid::PidFile.set_pid("/var/run/app.pid")
+  puts "This process is already running!"
+  exit
+end
+
+# ...the rest of your program goes here
+</pre>
+		<h2>Or in a more Ruby like way</h2>
+<pre>
+require 'pidfile'
+
+Pid::PidFile.new("/var/run/app.pid") do
+  # ...the rest of your program goes here
+end
+</pre>
+		<p>If an instance is already running then it will throw a <tt>Pid::AlreadyRunning</tt> exception</p>
+		<h2>Documentation</h2>
+		<p>The documentation can be found <a href="doc/index.html">here</a></p>
+	</body>
+</html>

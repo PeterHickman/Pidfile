@@ -1,0 +1,2 @@
+PidFile - Use a pid file to stop multiple instances of a program being run
+Copyright (C) 2009 Peter Hickman
